@@ -1,0 +1,51 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} UI Icons {% endblock %} 
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="title">Development</h5>
+        <p class="category">Features</p>
+      </div>
+      <div class="card-body all-icons">
+        <div class="row">
+          <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+            <div class="font-icon-detail">
+               <input type="file" value="choose file" id="demopick" accept="text/plain" onchange="readFile()" />
+            </div>
+          </div>
+        </div>
+        <div class="row">
+            <div id="demoshow">
+
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script>
+  function readFile(){
+    var selected = document.getElementById("demopick").files[0];
+    console.log(selected)
+
+    var reader = new FileReader();
+    reader.addEventListener("loadend", function(){
+        document.getElementById("demoshow").innerHTML = reader.result;
+    });
+    reader.readAsText(selected)
+  }
+</script>
+{% endblock javascripts %}
